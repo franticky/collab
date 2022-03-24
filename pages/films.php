@@ -8,11 +8,11 @@ if(isset($_SESSION["email"])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="assets/css/bootstrap.css" rel="stylesheet"/>
-    <link rel="assets/css/styles.css" rel="stylesheet"/>
+    <link href="../assets/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../assets/css/styles.css" rel="stylesheet"/>
     <a href="preconnect" href="https://fonts.googleapis.com">
     <a href="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <a href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <a href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> 
     <title>LES FILMS</title>
 </head>
 
