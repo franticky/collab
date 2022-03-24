@@ -72,7 +72,7 @@ if(isset($_SESSION["email"])){
                                     ));
                                             if($insert){
                                                 echo "<p class='container alert alert-success'>film ajouté</p>";
-                                                echo "<a href='filmS.php' class='container btn btn-primary'>voir le film</a>";
+                                                echo "<a href='film.php' class='container btn btn-primary'>voir le film</a>";
                                             }
                     }
                     

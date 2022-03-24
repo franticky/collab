@@ -1,4 +1,4 @@
-<?php
+a<?php
 session_start();
 if(isset($_SESSION["email"])){
     ?>
@@ -34,7 +34,7 @@ if(isset($_SESSION["email"])){
                 <div class="container">
                     <form action="traitementajout.php" id="form-login" method="POST" enctype="multipart/form-data">
                         <div class="text-center">
-                            <img src="../img/logo.jpg" alt="logo quelfilm" title="quelfilm.com">
+                            <img src="../assets/img/logo.png" alt="logo quelfilm" title="quelfilm.com">
                         </div>
                             <div class="mb-5">
                                 <label for="nom_film" class="form-label">

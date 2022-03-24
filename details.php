@@ -1,15 +1,9 @@
-<?php
-session_start();
-if(isset($_SESSION["email"])){
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
     <title>details des films</title>
 </head>
 <body>
@@ -21,7 +15,7 @@ if(isset($_SESSION["email"])){
             <div class="container-fluid">
                 <span class="mt-5 d-flex justify-content-around">
                     <h3 class="mt-4 text-secondary">
-                        demarrage
+                        START>
                         <?= $_SESSION['email']?>
                     </h3>
                         <form method="post">
@@ -73,8 +67,5 @@ if(isset($_SESSION["email"])){
                     </div>
                 </div>
             </div>
-            <?php
-        }
-        ?>
 </body>
 </html>
