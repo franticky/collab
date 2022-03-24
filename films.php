@@ -1,5 +1,15 @@
 <?php
-    session_start();
+session_start();
+if(isset($_SESSION["email"])){
+    function arreter(){
+        echo "bonjour!";
+        session_unset();
+        session_destroy();
+        header('Location: films.php');
+    }
+            if(isset($_POST['btn-deconnexion'])){
+                arreter();
+            }               
 ?>
 
 <!doctype html>
@@ -7,140 +17,116 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
-    <link href="assets/css/styles.css" rel="stylesheet"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-
-    <title>PROJET QUELFILM</title>
+    <link href="../assets/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../assets/css/styles.css" rel="stylesheet"/>
+    <a href="preconnect" href="https://fonts.googleapis.com">
+    <a href="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <a href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> 
+    <title>LES FILMS</title>
 </head>
+
 <body>
-<header>
+    <header>
         <?php
-            require_once "menu.php";
+        require_once ("menu.php");
         ?>
     </header>
-<div class="container-fluid">
-    <form id="form-login" method="post">
-        <div class="text-center">
-            <img src="assets/img/logo.png" alt="logo quelfilm" title="QuelFilm.com">
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <a href="">Mot de passe oublié ?</a>
-        <br />
-        <button type="submit" name="btn-connexion" class="mt-3 btn btn-warning">Connexion</button>
-    </form>
-</div>
-
-<?php
-    
-    function connexion(){
-
-        $utilisateur_phpadmin = "root";
-        $mot_passe_phpadmin = "";
-        $dbname = "quelfilm";
-        $hote = "localhost";
-
-
-        try {
-
-            
-            $db = new PDO("mysql:host=".$hote.";dbname=".$dbname.";charset=UTF8", $utilisateur_phpadmin, $mot_passe_phpadmin);
-           
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Connexion A MySQL via la classe PDO";
-
-            
-        }catch (PDOException $exception){
-            echo "Erreur de connexion a PDO MySQL " . $exception->getMessage();
-            var_dump($db);
-            die();
-        }
-
-
-
+    <?php
+            $user = "root";
+            $pass = "";
+            try{
+                $dbh = new PDO('mysql:host=localhost;dbname=quelfilm;charset=UTF8', $user, $pass);
+                $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    echo "<p class='container alert alert-success text-center'>PDO MySQL connexion acheived</p>";
+            }catch(PDOException $e){
+                    print "Error :".$e->getMEssage() ."<br/>";
+                die();
+            };
+            ?>
+            <div class="text-center">
+            <img width="10%" src="../img/logo.jpg" alt="quelfilm.quelfilm" title="quelfilm.sf">
+            </div>
+            <div class="container-fluid">
+        <span class="mt-4 d-flex justify-content-around">
+            <h3 class="mt-4 text-danger">connection etablie <?= $_SESSION['email'] ?></h3>
+        </span>
         
-        if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['password']) && !empty($_POST['password'])){
-           
-            $emailUtilisateur = trim(htmlspecialchars($_POST['email']));
-            $passwordUtilisateur = trim(htmlspecialchars($_POST['password']));
-
-            
-            var_dump($emailUtilisateur);
-            var_dump($passwordUtilisateur);
-
-           
-            $sql = "SELECT * FROM admins WHERE email_admin = ? AND password_admin = ?";
-
-            
-            $connexion = $db->prepare($sql);
-
-            
-            $connexion->bindParam(1, $emailUtilisateur);
-            $connexion->bindParam(2, $passwordUtilisateur);
-
-            
-            $connexion->execute();
-
-            
-            if($connexion->rowCount() >= 0){
-               
-                $ligne = $connexion->fetch();
+        <div class="text-center">
+                <a href="ajoutDarticle.php" class="mt-4 btn btn-outline-primary">
+                        Ajouter un film
+                </a>
+                <form method="post">
+                    <button type="submit" id="btn-deconnexion" name="btn-deconnexion" class="btn btn-warning" >sortir de la connection</button>
+                </form>
+        </div>
+            <h4 class="mt-4 text-danger">
+                Les Films
+            </h4>
+            <div class="container">
                 
-                if($ligne){
-                    
-                    $email = $ligne['email_admin'];
-                    $password = $ligne['password_admin'];
-
-                   
-                    if($emailUtilisateur === $email && $passwordUtilisateur === $password){
-                        
-                        $_SESSION['email'] = $emailUtilisateur;
-                        header("Location: pages/films.php");
-                    }else{
-                        
-                        echo "<div class='mt-3 container'>
-                    <p class='alert alert-danger p-3'>Erreur de connexion: Merci de vérifier votre email et votre mot de passe</p>
-                    </div>";
+            <div class="row">
+            <?php 
+                    foreach($statement as $film){
+                        $duree = new DateTime($film['duree_film']);
                     }
-                }else{
-                    
-                    echo "<div class='mt-3 container'>
-                    <p class='alert alert-danger p-3'>Erreur de connexion: Aucun utilisateur dans votre table</p>
-                    </div>";
-                }
+            ?>
+                <div class="col-sm-12 col-lg-4 mt-5">
+                    <div class="carte">
+                    <div class="text-center">
+                                        <h4 class="carte-titre text-info">
+                                            <?= $film['nom_film'] ?></h4>
+                                        <img src="<?= $film['affiche_film'] ?>" class="card-img-top img-fluid" alt="<?= $film['nom_film'] ?>" title="<?= $film['nom_film'] ?>">
+                                    </div>
+                                    
+                                    <div class="card-body">
 
-            }else{
-                
-                echo "Votre table est vide";
-            }
+                                        <p class="card-text"><?= $film['realisateur_film'] ?></p>
+                                        <p class="card-text"><?= $film['resume_film'] ?></p>
+                                        <p class="card-text text-success fw-bold">genre : <?= $film['genre_film'] ?></p>
+                                        <p class="card-text"><?= $film['duree_film'] ?></p>
+                                        <p class="card-text">recommandation :
+                                            <?php
+                                                if($film['recommandation_film'] == true){
+                                                    echo "OUI";
+                                                }else{
+                                                    echo "NON";
+                                                }
+                                            ?>
+                                            </p>
+                                            <em class="card-text">Durée: <?= $duree->format('h-m-s') ?></em>
+                                            <br />
+                                            <div class="container-fluid d-flex justify-content-center">
+                                                <a href="details.php?id_film=<?= $film['id_film'] ?>" class="mt-2 btn btn-success">Détails</a>
+                                                <a href="edition_film.php?id_film=<?= $film['id_film'] ?>" class="mt-2 btn btn-warning">Editer</a>
+                                                <a href="suppression.php?id_film=<?= $film['id_film'] ?>" class="mt-2 btn btn-danger">Supprimer</a>
+
+                                            </div>
+                    </div>
+
+            </div>
 
 
-        }else{
-            
-            echo "Il faut remplir tous les champs";
-        }
-    }
-
-
-    
-    if(isset($_POST['btn-connexion'])){
-        connexion();
-    }
-?>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
 </body>
 </html>
+
+<?php
+    //Deconnexion et destruction de la session $_SESSION['email']
+    function deconnexion(){
+        var_dump("ciao");
+        echo "ciaociao";
+        session_unset();
+        session_destroy();
+        header('Location: ../index.php');
+    }
+
+    //Click sur le bouton de deconnexion
+    if(isset($_POST['btn-deconnexion'])){
+        deconnexion();
+    }
+
+}else{
+    echo "<a href='' class='btn btn-warning'>S'inscrire</a>";
+    header('Location: ../index.php');
+}
