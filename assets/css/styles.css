@@ -21,7 +21,13 @@ html,body{
 
  }
 
-/*Login form*/
+ #img-logo{
+
+    max-width: 10%;
+    max-height: 10%;
+
+ }
+
 #form-login{
     padding: 20px;
     background-color: rgb(243, 241, 234);

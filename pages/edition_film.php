@@ -57,10 +57,10 @@ if(isset($_SESSION["email"])){
 
         <div class="container">
 
-            <form action="traitement_editer_film.php?id_film=<?= $details['id_film'] ?>"  id="form-update" method="post" enctype="multipart/form-data">
+            <form action="traitement_edition_film.php?id_film=<?= $details['id_film'] ?>"  id="form-update" method="post" enctype="multipart/form-data">
                 <h2 class="text-info text-center">EDITER LE FILM</h2>
-                <div class="text-center img-logo">
-                    <img src="../assets/img/logo.png" alt="logo quelfilm" title="quelfilm.com">
+                <div class="text-center img-logo" id="img-logo" >
+                    <img src="" alt="logo quelfilm" title="quelfilm.com">
                 </div>
                 <div class="mb-3">
                     <label for="nom_film" class="form-label">Titre</label>
@@ -69,12 +69,12 @@ if(isset($_SESSION["email"])){
 				
 				<div class="mb-3">
                     <label for="date_sortie" class="form-label">Sorti en </label>
-                    <input type="date" class="form-control" id="date_sortie" name="date_sortie" value="<?= $details['annee_film'] ?>" required>
+                    <input type="text" class="form-control" id="date_sortie" name="date_sortie" value="<?= $details['annee_film'] ?>" required>
                 </div>
 				
 				<div class="mb-3">
-                    <label for="image_film" class="form-label">Image du film</label>
-                    <input type="file" class="form-control" id="image_film" name="image_film" required value="<?= $details['image_film'] ?>">
+                    <label for="affiche_film" class="form-label">Affiche du film</label>
+                    <input type="file" class="form-control" id="image_film" name="image_film" required value="<?= $details['affiche_film'] ?>">
                 </div>
 
                 <div class="mb-3">
@@ -102,20 +102,22 @@ if(isset($_SESSION["email"])){
 
     <?php
 
-    //Deconnexion et destruction de la session $_SESSION['email']
+    //  Deconnexion et Destruction de la session $_SESSION['email']
     function deconnexion(){
-        var_dump("ciao");
-        echo "ciaociao";
+        var_dump("Ciao");
+        echo "Vous êtes bien déconnecté";
         session_unset();
         session_destroy();
         header('Location: ../index.php');
     }
 
-    //Click sur le bouton de deconnexion
+                //  Clic sur le bouton de deconnexion
     if(isset($_POST['btn-deconnexion'])){
         deconnexion();
     }
 
 }else{
     echo "<a href='' class='btn btn-warning'>S'inscrire</a>";
+    header('Location: ../index.php');
 }
+            
