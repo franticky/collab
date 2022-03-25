@@ -100,8 +100,8 @@ if(isset($_SESSION["email"])){
                     <input type="text" class="form-control" id="resume_film" name="resume_film" value="<?= $details['resume_film'] ?>" required>
                 </div>
 				<div class="mb-3">
-                    <label for="image_film" class="form-label">Image du film</label>
-                    <input type="file" class="form-control" id="image_film" name="image_film" required value="<?= $details['image_film'] ?>">
+                    <label for="affiche_film" class="form-label">Affiche du film</label>
+                    <input type="file" class="form-control" id="affiche_film" name="affiche_film" required value="<?= $details['affiche_film'] ?>">
                 </div>
                 <div class="mb-3">
                     <label for="resume_film" class="form-label">Résumé</label>
