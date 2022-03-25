@@ -79,7 +79,7 @@
 
                     if($emailUtilisateur === $email && $passwordUtilisateur === $password){
                         $_SESSION['email'] = $emailUtilisateur;
-                        header("Location: pages/films.php");
+                        header("Location: pages/films2.php");
                     }else{
                         echo "<div class='mt-3 container'>
                     <p class='alert alert-danger p-3'>Erreur de connexion: Merci de vérifier votre email et votre mot de passe</p>
