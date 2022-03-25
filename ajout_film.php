@@ -9,7 +9,7 @@ if(isset($_SESSION["email"])){
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../assets/css/bootstrap.css" rel="stylesheet" />
-        <title>Document</title>
+        <title>ajout de film</title>
     </head>
     <body>
         <header>
@@ -20,7 +20,7 @@ if(isset($_SESSION["email"])){
 
             <div class="container-fluid">
                 <span class="mt-5 d-flex justify-content-around">
-                    <h3 class="mt-5 text-warning" > 
+                    <h3 class="mt-5 text-primary" > 
                                 Prenez un siege, 
                         <?= $_SESSION['email'] ?> 
                     </h3>
@@ -103,7 +103,9 @@ if(isset($_SESSION["email"])){
                     <button type="submit" name="btn-connexion" class="btn btn-warning">
                             ajouter
                     </button>
-                    <a href="films.php" class="btn btn-success">Annuler</a>
+                    <a href="films2.php" class="btn btn-success">
+                        Annuler
+                    </a>
                 </div>
                     </form>
                 </div>
