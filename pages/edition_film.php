@@ -49,37 +49,37 @@ if(isset($_SESSION["email"])){
 	
     <div class="container-fluid">
             <span class="mt-3 d-flex justify-content-around">
-                <h3 class="mt-3 text-primary">BIENVENUE <?= $_SESSION['prenom_admin'] ?></h3>
+                <h3 class="mt-3 text-primary">BIENVENUE <?= $_SESSION['email'] ?></h3>
                 <form method="post">
                     <button id="btn-deconnexion" name="btn-deconnexion" class="btn btn-danger">DECONNEXION</button>
                 </form>
-            </span>
+            </span></br></br></br></br></br></br>
 
         <div class="container">
 
             <form action="traitement_editer_film.php?id_film=<?= $details['id_film'] ?>"  id="form-update" method="post" enctype="multipart/form-data">
-                <h3 class="text-info">EDITER LE FILM</h3>
+                <h2 class="text-info text-center">EDITER LE FILM</h2>
                 <div class="text-center img-logo">
                     <img src="../assets/img/logo.png" alt="logo quelfilm" title="quelfilm.com">
                 </div>
                 <div class="mb-3">
                     <label for="nom_film" class="form-label">Titre</label>
-                    <input type="text" class="form-control" id="nom_film" name="nom_film" placeholder="<?= $details['nom_film'] ?>" required>
+                    <input type="text" class="form-control" id="nom_film" name="nom_film" value="<?= $details['nom_film'] ?>" required>
                 </div>
 				
 				<div class="mb-3">
                     <label for="date_sortie" class="form-label">Sorti en </label>
-                    <input type="date" class="form-control" id="date_sortie" name="date_sortie" placeholder="<?= $details['annee_film'] ?>" required>
+                    <input type="date" class="form-control" id="date_sortie" name="date_sortie" value="<?= $details['annee_film'] ?>" required>
                 </div>
 				
 				<div class="mb-3">
                     <label for="image_film" class="form-label">Image du film</label>
-                    <input type="file" class="form-control" id="image_film" name="image_film" required placeholder="<?= $details['image_film'] ?>">
+                    <input type="file" class="form-control" id="image_film" name="image_film" required value="<?= $details['image_film'] ?>">
                 </div>
 
                 <div class="mb-3">
                     <label for="resume_film" class="form-label">Résumé</label>
-                    <textarea class="form-control" rows="5" id="resume_film" name="resume_film" placeholder="<?= $details['resume_film'] ?>" required></textarea>
+                    <textarea class="form-control" rows="5" id="resume_film" name="resume_film" value="<?= $details['resume_film'] ?>" required></textarea>
                 </div>
 
                 <div class="mb-3">
