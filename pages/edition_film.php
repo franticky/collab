@@ -62,29 +62,54 @@ if(isset($_SESSION["email"])){
                 <div class="text-center img-logo" id="img-logo" >
                     <img src="" alt="logo quelfilm" title="quelfilm.com">
                 </div>
+
                 <div class="mb-3">
                     <label for="nom_film" class="form-label">Titre</label>
                     <input type="text" class="form-control" id="nom_film" name="nom_film" value="<?= $details['nom_film'] ?>" required>
                 </div>
-				
+				<div class="mb-3">
+                    <label for="nom_film" class="form-label">realisateur</label>
+                    <input type="text" class="form-control" id="realisateur_film" name="realisateur_film" value="<?= $details['realisateur_film'] ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nom_film" class="form-label">scenariste</label>
+                    <input type="text" class="form-control" id="scenariste_film" name="scenariste_film" value="<?= $details['scenariste_film'] ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nom_film" class="form-label">studio</label>
+                    <input type="text" class="form-control" id="studio_film" name="studio_film" value="<?= $details['studio_film'] ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nom_film" class="form-label">genre</label>
+                    <input type="text" class="form-control" id="genre_film" name="genre_film" value="<?= $details['genre_film'] ?>" required>
+                </div>
 				<div class="mb-3">
                     <label for="date_sortie" class="form-label">Sorti en </label>
-                    <input type="text" class="form-control" id="date_sortie" name="date_sortie" value="<?= $details['annee_film'] ?>" required>
+                    <input type="text" class="form-control" id="annee_sortie" name="annee_film" value="<?= $details['annee_film'] ?>" required>
                 </div>
-				
+                <div class="mb-3">
+                    <label for="nom_film" class="form-label">duree</label>
+                    <input type="text" class="form-control" id="duree_film" name="duree_film" value="<?= $details['duree_film'] ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nom_film" class="form-label">pays</label>
+                    <input type="text" class="form-control" id="pays_film" name="pays_film" value="<?= $details['pays_film'] ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nom_film" class="form-label">resume</label>
+                    <input type="text" class="form-control" id="resume_film" name="resume_film" value="<?= $details['resume_film'] ?>" required>
+                </div>
 				<div class="mb-3">
                     <label for="affiche_film" class="form-label">Affiche du film</label>
-                    <input type="file" class="form-control" id="image_film" name="image_film" required value="<?= $details['affiche_film'] ?>">
+                    <input type="file" class="form-control" id="affiche_film" name="affiche_film" required value="<?= $details['affiche_film'] ?>">
                 </div>
-
                 <div class="mb-3">
                     <label for="resume_film" class="form-label">Résumé</label>
                     <textarea class="form-control" rows="5" id="resume_film" name="resume_film" value="<?= $details['resume_film'] ?>" required></textarea>
                 </div>
-
                 <div class="mb-3">
-                    <label for="stock_film" class="form-label">Disponible</label>
-                    <select class="form-control" name="stock_film" id="stock_film" required>
+                    <label for="stock_film" class="form-label">Recommandation</label>
+                    <select class="form-control" name="recommandation_film" id="recommandation_film" required>
                         <option value="0">NON</option>
                         <option value="1">OUI</option>
                     </select>

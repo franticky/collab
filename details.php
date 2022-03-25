@@ -1,8 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION["email"])){
-?>
-
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +20,7 @@ if(isset($_SESSION["email"])){
             <div class="container-fluid">
                 <span class="mt-5 d-flex justify-content-around">
                     <h3 class="mt-4 text-secondary">
-                        demarrage
+                        Demmarré
                         <?= $_SESSION['email']?>
                     </h3>
                         <form method="post">
@@ -43,7 +42,7 @@ if(isset($_SESSION["email"])){
                         die();
                     }   
                         if($dbh){
-                            $sql = "SELECT * FROM questfilms WHERE id_film = ?";
+                            $sql = "SELECT * FROM quelfilm WHERE id_film = ?";
                                 $id_film = $_GET["id_film"];
                                     $request = $dbh->prepare($sql);
                                         $request->bindParam(1, $id_film);
@@ -58,23 +57,45 @@ if(isset($_SESSION["email"])){
                 <div class="card">
                    
                     <div class="text-center">
-                        <h4 class="card-title text-info"><?= $details['nom_film']?></h4>
+                        <h4 class="card-title text-info">
+                            <?= $details['nom_film']?>
+                        </h4>
                         <img src="<?= $details['affiche_film']?>" class="card-img-top img-fluid img-details" alt="<?= $details['nom_film']?>" title="<?= $details['nom_film'] ?>">
                     </div>
                     <div class="card-body">
                         <p class="card-text">
                             <?= $details['realisateur_film'] ?>
-                        </p>
+                            </p>
                         <p class="card-text text-primary fw-bold">
-                            Realisateur: <?= $details['realisateur_film'] ?>
-                        </p>
+                            genre: <?= $details['genre_film'] ?>
+                            </p>
                         <p class="card-text text-primary fw-bold">
-                           Annee: 
+                            studio: <?= $details['studio_film'] ?>
+                            </p>
+                        <p class="card-text text-primary fw-bold">
+                            scenariste: <?= $details['scenariste_film'] ?>
+                            </p>
+                        <p class="card-text text-primary fw-bold">
+                           resume: <?= $details['resume_film'] ?>
+                           </p>
+                        
+                        <p class="card-text text-primary fw-bold">
+                           duree: <?= $details['duree_film'] ?>
+                           </p>
+                        <p class="card-text text-primary fw-bold">
+                           annee: <?= $details['annee_film'] ?>
+                           </p>
+                        <p class="card-text text-primary fw-bold">
+                           pays: <?= $details['pays_film'] ?>
+                           </p>
+                        <p class="card-text text-primary fw-bold">
+                           recommandation: <?= $details['recommandation_film'] ?>
+                           </p>
+                          
+
                     </div>
                 </div>
+                </div>
             </div>
-            <?php
-        }
-        ?>
 </body>
 </html>
