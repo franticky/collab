@@ -21,7 +21,7 @@ if(isset($_SESSION["email"])){
             <div class="container-fluid">
                 <span class="mt-5 d-flex justify-content-around">
                     <h3 class="mt-5 text-warning" > 
-                                Prenez un siege
+                                Prenez un siege, 
                         <?= $_SESSION['email'] ?> 
                     </h3>
                         <form method="POST">
