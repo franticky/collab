@@ -12,16 +12,16 @@ session_start();
 </head>
 <body>
 
-<!--    <h4>Hello</h4>  -->
+   <h4>Hello</h4>  
 
 
     <div id="drag">
         <div id="spin">
-            <img src="../assets/img/NoMercyfortherude.jpg" alt="">
-            <img src="../assets/img/thehost.jpg" alt="">
-            <img src="../assets/img/Nowheretohide.jpg" alt="">
-            <img src="../assets/img/Anna.jpg" alt="">
-            <img src="../assets/img/Unhommealahauteur.jpg" alt="">
+            <img src="../assets/img/NoMercyfortherude.jpg" alt="NoMercyfortherude">
+            <img src="../assets/img/thehost.jpg" alt="thehost">
+            <img src="../assets/img/Nowheretohide.jpg" alt="Nowheretohide">
+            <img src="../assets/img/Anna.jpg" alt="Anna">
+            <img src="../assets/img/Unhommealahauteur.jpg" alt="Unhommealahauteur">
             <img src="../assets/img/Rec4.jpg" alt="">
             <img src="../assets/img/ploy.jpg" alt="">
             <img src="../assets/img/theeye2.jpg" alt="">
