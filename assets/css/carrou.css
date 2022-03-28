@@ -8,7 +8,7 @@ html, body{
 body{
     overflow: hidden;
     display: flex;
-    background: rgb(114, 105, 240);
+    background: rgb(2, 138, 86);
     perspective: 1000px;
     transform-style: preserve-3d;
 }

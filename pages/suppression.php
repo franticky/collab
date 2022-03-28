@@ -22,6 +22,13 @@ if(isset($_SESSION["email"])){
     ?>
 </header>
 
+<span class="mt-3 d-flex justify-content-end">
+                <form method="post">
+                    <button id="btn-deconnexion" name="btn-deconnexion" class="btn btn-danger">DECONNEXION</button>
+                </form>
+            </span>
+
+
 <?php
 $user = "root";
 $pass = "";
@@ -37,7 +44,7 @@ try {
 }
 
 if($dbh){
-    $sql = "SELECT * FROM film WHERE id_film = ?";
+    $sql = "SELECT * FROM films WHERE id_film = ?";
     $id_film = $_GET['id_film'];
     $request = $dbh->prepare($sql);
     $request->bindParam(1, $id_film);
@@ -48,14 +55,14 @@ if($dbh){
     <form method="post">
         <p class="text-center text-danger">SUPPRIMER LE FILM</p>
         <p class="text-center text-danger"><?= $details['nom_film'] ?></p>
-        <p class="text-center text-danger"><?= $details['description_film'] ?></p>
+        <p class="text-center text-danger"><?= $details['resume_film'] ?></p>
         <p class="text-center text-danger">
-           <img src="<?= $details['image_film'] ?>" class="img-thumbnail" alt="" title="" width="200"/>
+           <img src="<?= $details['affiche_film'] ?>" class="img-thumbnail" alt="" title="" width="200"/>
         </p>
         <div class="d-flex justify-content-center">
 
-            <button type="submit" name="btn-supprimer" class="btn btn-danger">Confimer</button>
-            <a href="films.php" class="btn btn-secondary">Annuler</a>
+            <button type="submit" name="btn-supprimer" class="btn btn-danger">Confirmer</button>
+            <a href="films2.php" class="btn btn-secondary">Annuler</a>
         </div>
 
     </form>

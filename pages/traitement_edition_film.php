@@ -50,7 +50,7 @@ try {
 }
 
 if($dbh){
-    $sql = "UPDATE `films` SET `id_film`=?,`nom_film`=?,`realisateur_film`=,`scenariste_film`=,`studio_film`=,`genre_film`=,`annee_film`=,`duree_film`=,`pays_film`=,`resume_film`=?,`recommandation_film`=?,`affiche_film`=? WHERE id_film = ?";
+    $sql = "UPDATE films SET nom_film=?,realisateur_film=?,scenariste_film=?,studio_film=?,genre_film=?,annee_film=?,duree_film=?,pays_film=?,resume_film=?,recommandation_film=?,affiche_film=? WHERE  id_film = ?";
     $update = $dbh->prepare($sql);
     $update->execute(array(
         $_POST['id_film'],

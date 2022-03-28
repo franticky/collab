@@ -8,7 +8,7 @@ if(isset($_SESSION["email"])){
     try {
         $dbh = new PDO('mysql:host=localhost;dbname=quelfilm', $user, $pass);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "<p class='container alert alert-info text-center'>Vous êtes bien connecté à PDO MySQL</p>";
+        echo "<p class='container alert alert-success text-center'>Vous êtes bien connecté</p>";
 
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -17,7 +17,6 @@ if(isset($_SESSION["email"])){
 
     if($dbh){
         $sql = "SELECT * FROM films WHERE id_film = ?";
-
         $id_film = $_GET['id_film'];
         $request = $dbh->prepare($sql);
         $request->bindParam(1, $id_film);
@@ -48,17 +47,19 @@ if(isset($_SESSION["email"])){
     </header>
 	
     <div class="container-fluid">
-            <span class="mt-3 d-flex justify-content-around">
-                <h3 class="mt-3 text-primary">BIENVENUE <?= $_SESSION['email'] ?></h3>
+            <span class="mt-3 d-flex justify-content-end">
                 <form method="post">
                     <button id="btn-deconnexion" name="btn-deconnexion" class="btn btn-danger">DECONNEXION</button>
                 </form>
-            </span></br></br></br></br></br></br>
+            </span>
+
+            <h4 class="mt-3 text-success text-center">BIENVENUE <?= $_SESSION['email'] ?></h4>
+
 
         <div class="container">
 
-            <form action="traitement_edition_film.php?id_film=<?= $details['id_film'] ?>"  id="form-update" method="post" enctype="multipart/form-data">
-                <h2 class="text-info text-center">EDITER LE FILM</h2>
+            <form action="traitement_edition_film.php?id_film=<?= $details['id_film'] ?>"  id="form-update" method="post" enctype="multipart/form-data" >
+                <h2 class="mt-5 text-info text-center">EDITER LE FILM</h2></br></br></br>
                 <div class="text-center img-logo" id="img-logo" >
                     <img src="" alt="logo quelfilm" title="quelfilm.com">
                 </div>
@@ -67,47 +68,56 @@ if(isset($_SESSION["email"])){
                     <label for="nom_film" class="form-label">Titre</label>
                     <input type="text" class="form-control" id="nom_film" name="nom_film" value="<?= $details['nom_film'] ?>" required>
                 </div>
+
 				<div class="mb-3">
-                    <label for="nom_film" class="form-label">realisateur</label>
+                    <label for="nom_film" class="form-label">Réalisateur</label>
                     <input type="text" class="form-control" id="realisateur_film" name="realisateur_film" value="<?= $details['realisateur_film'] ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="nom_film" class="form-label">scenariste</label>
+                    <label for="nom_film" class="form-label">Scénariste</label>
                     <input type="text" class="form-control" id="scenariste_film" name="scenariste_film" value="<?= $details['scenariste_film'] ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="nom_film" class="form-label">studio</label>
+                    <label for="nom_film" class="form-label">Studio</label>
                     <input type="text" class="form-control" id="studio_film" name="studio_film" value="<?= $details['studio_film'] ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="nom_film" class="form-label">genre</label>
+                    <label for="nom_film" class="form-label">Genre</label>
                     <input type="text" class="form-control" id="genre_film" name="genre_film" value="<?= $details['genre_film'] ?>" required>
                 </div>
 				<div class="mb-3">
                     <label for="date_sortie" class="form-label">Sorti en </label>
                     <input type="text" class="form-control" id="annee_sortie" name="annee_film" value="<?= $details['annee_film'] ?>" required>
+
+			
+        
+             
+          
+				<div class="mb-3">
+                    <label for="affiche_film" class="form-label">Affiche du film</label>
+                    <input type="file" class="form-control" id="affiche_film" name="affiche_film" required value="<?= $details['affiche_film'] ?>">
+
                 </div>
                 <div class="mb-3">
-                    <label for="nom_film" class="form-label">duree</label>
+                    <label for="nom_film" class="form-label">Durée</label>
                     <input type="text" class="form-control" id="duree_film" name="duree_film" value="<?= $details['duree_film'] ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="nom_film" class="form-label">pays</label>
+
+                    <label for="nom_film" class="form-label">Pays</label>
                     <input type="text" class="form-control" id="pays_film" name="pays_film" value="<?= $details['pays_film'] ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="nom_film" class="form-label">resume</label>
+                    <label for="nom_film" class="form-label">L'histoire</label>
                     <input type="text" class="form-control" id="resume_film" name="resume_film" value="<?= $details['resume_film'] ?>" required>
                 </div>
 				<div class="mb-3">
                     <label for="affiche_film" class="form-label">Affiche du film</label>
                     <input type="file" class="form-control" id="affiche_film" name="affiche_film" required value="<?= $details['affiche_film'] ?>">
                 </div>
+               
                 <div class="mb-3">
-                    <label for="resume_film" class="form-label">Résumé</label>
-                    <textarea class="form-control" rows="5" id="resume_film" name="resume_film" value="<?= $details['resume_film'] ?>" required></textarea>
-                </div>
-                <div class="mb-3">
+
                     <label for="stock_film" class="form-label">Recommandation</label>
                     <select class="form-control" name="recommandation_film" id="recommandation_film" required>
                         <option value="0">NON</option>
@@ -116,8 +126,8 @@ if(isset($_SESSION["email"])){
                 </div>
 
                 <div class="d-flex justify-content-around">
-                    <button type="submit" name="btn-connexion" class="btn btn-warning">Mettre à jour</button>
-                    <a href="films.php" class="btn btn-secondary">Annuler</a>
+                    <button type="submit" name="btn-connexion" class="btn btn-info">Mettre à jour</button>
+                    <a href="films2.php" class="btn btn-warning">Annuler</a>
                 </div>
             </form>
         </div>

@@ -3,35 +3,36 @@ html,body{
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial';
-    /*   background-color: rgb(9, 5, 59)!important;  */
     background-image: url(../img/pic_film.jpg);
     background-size:100%;
-    
- 
 }
+
+h1{
+    margin-top: 10% ;
+    margin-bottom: 5%;
+}
+
  a{
      color: #403516!important;
  }
+
  a:hover{
      color: #A3A658!important;
  }
 
  .card-body{
-    background-color: #82e9c1;
-
+    background-color: rgb(253, 250, 244);
  }
 
  #img-logo{
-
     max-width: 10%;
     max-height: 10%;
-
  }
 
 #form-login{
     padding: 20px;
-    background-color: rgb(243, 241, 234);
-    width: 70%;
+    background-color: rgb(252, 249, 251);
+    width: 65%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
@@ -50,21 +51,24 @@ html,body{
     outline: none;
 }
 
+#tab-admin{
+    border: #403516 !important;
+}
 
 Update
 #form-update{
     padding: 20px;
-    background-color: #0f4a63;
+    background-color: rgb(250, 248, 227);
     width: 70%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
     border-radius: 5px;
     box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.2);
-    color: lime;
+    color: rgb(181, 250, 181);
 }
 .img-logo{
-    background-color: white;
+    background-color: rgb(250, 248, 227);
     padding: 20px;
 }
 

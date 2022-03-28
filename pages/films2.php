@@ -23,6 +23,13 @@ if(isset($_SESSION["email"])){
         require_once "menu.php";
         ?>
     </header>
+
+        <span class="mt-3 d-flex justify-content-end">
+            <form method="post">
+                <button id="btn-deconnexion" name="btn-deconnexion" class="btn btn-danger">DECONNEXION</button>
+            </form>
+        </span>
+
     <?php
 
         $user = "root";
@@ -52,19 +59,15 @@ if(isset($_SESSION["email"])){
 
     ?>
 
-    <div class="container-fluid"></br>
+    <div class="container-fluid">
 
-    <h4 class="mt-3 text-success text-center" id="welcome" >BIENVENUE <?= $_SESSION['email'] ?></h4>
-    <span class="mt-3 d-flex justify-content-end">
-            <form method="post">
-                <button id="btn-deconnexion" name="btn-deconnexion" class="btn btn-primary">DECONNEXION</button></br></br></br>
-            </form>
-        </span>
+        <h3 class="mt-5 text-success text-center" id="welcome" >BIENVENUE <?= $_SESSION['email'] ?></h3>
+
     </div>
 
     <div class="container">
         <div class="row">
-            <h1 class="text-info text-center">LES FILMS</h1></br></br></br></br>
+            <h1 class="mt-5 text-info text-center">LES FILMS</h1></br></br></br></br>
             <?php
                 foreach ($filmsTableau as $film){
                 $annee_film = new DateTime($film['annee_film']);
@@ -95,7 +98,7 @@ if(isset($_SESSION["email"])){
 						
 						<br />
 							<div class="container-fluid d-flex justify-content-center">
-								<a href="details.php?id_film=<?= $film['id_film'] ?>" class="mt-2 btn btn-info">Détails</a>
+								<a href="detail_film.php" class="mt-2 btn btn-info">Détails</a>
 								<a href="edition_film.php?id_film=<?= $film['id_film'] ?>" class="mt-2 btn btn-success">Editer</a>
 								<a href="suppression.php?id_film=<?= $film['id_film'] ?>" class="mt-2 btn btn-warning">Supprimer</a>
 							</div>
@@ -110,7 +113,7 @@ if(isset($_SESSION["email"])){
     
     <div class="text-center">
         <form method="post"></br></br></br></br>              
-            <a href="ajouter_film.php?id_film=<?= $film['id_film'] ?>" class="btn btn-info">AJOUTER UN FILM</a></br></br></br></br>
+            <a href="ajout_film.php?id_film=<?= $film['id_film'] ?>" class="btn btn-info">AJOUTER UN FILM</a></br></br></br></br>
         </form>
     </div>
     
