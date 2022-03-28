@@ -68,6 +68,7 @@ if(isset($_SESSION["email"])){
                     <label for="nom_film" class="form-label">Titre</label>
                     <input type="text" class="form-control" id="nom_film" name="nom_film" value="<?= $details['nom_film'] ?>" required>
                 </div>
+
 				<div class="mb-3">
                     <label for="nom_film" class="form-label">Réalisateur</label>
                     <input type="text" class="form-control" id="realisateur_film" name="realisateur_film" value="<?= $details['realisateur_film'] ?>" required>
@@ -87,12 +88,22 @@ if(isset($_SESSION["email"])){
 				<div class="mb-3">
                     <label for="date_sortie" class="form-label">Sorti en </label>
                     <input type="text" class="form-control" id="annee_sortie" name="annee_film" value="<?= $details['annee_film'] ?>" required>
+
+			
+        
+             
+          
+				<div class="mb-3">
+                    <label for="affiche_film" class="form-label">Affiche du film</label>
+                    <input type="file" class="form-control" id="affiche_film" name="affiche_film" required value="<?= $details['affiche_film'] ?>">
+
                 </div>
                 <div class="mb-3">
                     <label for="nom_film" class="form-label">Durée</label>
                     <input type="text" class="form-control" id="duree_film" name="duree_film" value="<?= $details['duree_film'] ?>" required>
                 </div>
                 <div class="mb-3">
+
                     <label for="nom_film" class="form-label">Pays</label>
                     <input type="text" class="form-control" id="pays_film" name="pays_film" value="<?= $details['pays_film'] ?>" required>
                 </div>
@@ -106,6 +117,7 @@ if(isset($_SESSION["email"])){
                 </div>
                
                 <div class="mb-3">
+
                     <label for="stock_film" class="form-label">Recommandation</label>
                     <select class="form-control" name="recommandation_film" id="recommandation_film" required>
                         <option value="0">NON</option>
